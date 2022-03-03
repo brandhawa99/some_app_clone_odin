@@ -1,11 +1,14 @@
 
 import './App.css';
+import Login from './Component/Firebase/Login';
 
 function App() {
-  return (
-    <div className="App">
-      <h1 className='bg-red-100'>Hello</h1>
 
+  
+
+  return (
+    <div className='main-container'>
+      <Login />
     </div>
   );
 }

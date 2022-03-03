@@ -1,3 +1,58 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-container {
+  margin-top: 5rem;
+  box-sizing: border-box;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px black solid;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.inputs > input {
+  box-sizing: border-box;
+  padding: 0.25rem 2rem;
+}
+
+.login-button {
+  margin-top: 0.5rem;
+  background-color: hsl(221, 80%, 71%);
+  border: none;
+  box-sizing: border-box;
+  padding: 0.125rem 0rem;
+  font-size: medium;
+  font-weight: 800;
+}
+.sign-up-button {
+  margin-top: 0.5rem;
+  background-color: black;
+  color: hsl(221, 80%, 71%);
+  border: none;
+  box-sizing: border-box;
+  padding: 0.125rem 0rem;
+  font-size: medium;
+  font-weight: 800;
+}
+.or-bar {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+.hor-bar {
+  border-top: 1px black solid;
+  width: 6vw;
+}
+.or {
+  padding: 0rem 1rem;
+}
