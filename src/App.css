@@ -21,8 +21,9 @@
 }
 
 .inputs > input {
+  width: 15rem;
   box-sizing: border-box;
-  padding: 0.25rem 2rem;
+  padding: 0.25rem 1rem;
 }
 
 .login-button {
