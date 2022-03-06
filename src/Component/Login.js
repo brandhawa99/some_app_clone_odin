@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import {auth} from './firebase_config'
+import {auth} from './Firebase/firebase_config'
 import {createUserWithEmailAndPassword, signOut,
         signInWithEmailAndPassword,
 
