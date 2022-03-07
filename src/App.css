@@ -57,3 +57,8 @@
 .or {
   padding: 0rem 1rem;
 }
+
+.errorMessage {
+  color: red;
+  justify-self: center;
+}

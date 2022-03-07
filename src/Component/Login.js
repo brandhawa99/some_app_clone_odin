@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import {auth} from './Firebase/firebase_config'
 import {createUserWithEmailAndPassword, signOut,
-        signInWithEmailAndPassword,
+        signInWithEmailAndPassword, onAuthStateChanged,
 
 } from 'firebase/auth'
 
@@ -12,6 +12,7 @@ const Login = props =>{
 
     const [signInPass, setSignInPass] = useState('');
     const [signInEmail, setSignInEmail] = useState('')
+    const [error, setError] = useState(false);
 
 
     const getEmail = (e) =>{
@@ -41,14 +42,22 @@ const Login = props =>{
     }
     const signOutClick = async() =>{
         await signOut(auth) 
-        console.log('User signed out')
+        // console.log('User signed out')
 
     }
 
     const instaLogin = async(e) =>{
-        e.preventDefault();
-        const cred = await signInWithEmailAndPassword(auth, signInEmail, signInPass)
-        console.log(cred.user);
+        try {
+            e.preventDefault();
+            const cred = await signInWithEmailAndPassword(auth, signInEmail, signInPass)
+            console.log(cred.user);
+        } catch (error) {
+            setError(true);
+            setInterval(()=>{
+                setError(false);
+            },5000)
+            
+        }
     }
 
     const getSignInEmail = (e) =>{
@@ -60,6 +69,14 @@ const Login = props =>{
         e.preventDefault();
         setSignInPass(e.target.value);
     }
+    const unSubAuth = onAuthStateChanged(auth, (user) =>{
+        if(user){
+            console.log('logged in', user)
+        }else{
+            console.log('signed out')
+            unSubAuth();
+        }
+    })
 
 
 
@@ -71,6 +88,7 @@ const Login = props =>{
           <div className='inputs'>
             <input onChange={getSignInEmail}value={signInEmail} placeholder='Phone number, username, or email'  required/>
             <input onChange={getSignInPassword} value={signInPass} type='password' placeholder='Password' required/>
+            {error && <div className='errorMessage'> There was and error </div>}
             <button onClick={instaLogin} className='login-button'>Log In</button>
           </div>
           <div className='or-bar'>
